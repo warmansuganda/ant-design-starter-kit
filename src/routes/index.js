@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: "/login",
-    layout: DefaultLayout,
+    layout: LandingLayout,
     component: Login
   },
 ]

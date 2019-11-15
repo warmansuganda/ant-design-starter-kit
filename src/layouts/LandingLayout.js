@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout } from 'antd';
 
-import HeaderNavbar from '@src/components/layout/HeaderNavbar'
+import { HeaderNavbar } from '@src/components/layout/LandingComponent'
 
 const DefaultLayout = (props) => {
     return (
