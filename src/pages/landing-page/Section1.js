@@ -3,7 +3,7 @@ import { Layout, Button } from 'antd';
 
 const Section1 = (props) => {
     return (
-        <Layout className="home-s1">
+        <Layout className="home-s1 banner-container">
             <div className="banner-wrapper">
                 <div className="banner-text-wrapper">
                     <h2>The fun ecosystem for front liners</h2>
