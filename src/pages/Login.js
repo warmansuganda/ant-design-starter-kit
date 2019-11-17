@@ -2,13 +2,15 @@ import React from 'react'
 import { Layout, Card, Row, Col, Form, Icon, Button } from 'antd';
 
 import { FormDecorator } from '@src/components/form'
+import api from '@src/api'
 
 const Login = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(process.env)
         props.form.validateFields((err, values) => {
           if (!err) {
-            console.log('Received values of form: ', values);
+            api.form()
           }
         });
     };
