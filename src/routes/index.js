@@ -12,17 +12,17 @@ const routes = [
   {
     path: "/",
     exact: true,
-    component: () => <Redirect to="/landing-page" />
+    page: () => <Redirect to="/landing-page" />
   },
   {
     path: "/landing-page",
     layout: LandingLayout,
-    component: LandingPage
+    page: LandingPage
   },
   {
     path: "/login",
     layout: LandingLayout,
-    component: Login
+    page: Login
   },
 ]
 
@@ -31,6 +31,6 @@ export default [
     {
       path: "*",
       layout: DefaultLayout,
-      component: NotFound
+      page: NotFound
     }
 ];

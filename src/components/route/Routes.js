@@ -30,13 +30,13 @@ const Routes = (props) => {
                     component={props => {
                         if (typeof route.layout === 'undefined') {
                             return (
-                                <route.component {...props} routes={route.routes} />
+                                <route.page {...props} routes={route.routes} />
                             );
                         }
 
                         return (
                             <route.layout {...props}>
-                                <route.component {...props} routes={route.routes} />
+                                <route.page {...props} routes={route.routes} />
                             </route.layout>
                         );
                     }}
