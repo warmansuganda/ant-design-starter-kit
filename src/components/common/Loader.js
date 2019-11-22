@@ -1,5 +1,5 @@
 import React from 'react';
-import PageLoader from '../common/PageLoader';
+import PageLoader from '@src/components/common/PageLoader';
 
 const Loader = ({ processing, children}) => (
     <div>

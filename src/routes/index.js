@@ -22,7 +22,8 @@ const routes = [
   {
     path: "/login",
     layout: LandingLayout,
-    page: Login
+    page: Login,
+    role: 'Guest'
   },
 ]
 

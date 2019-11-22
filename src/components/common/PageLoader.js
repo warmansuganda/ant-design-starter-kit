@@ -1,9 +1,8 @@
 import React from 'react'
+import { Spin } from 'antd'
 
 export default () => (
-    <div className="spinner">
-        <div className="loader">
-            <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-        </div>
+    <div className="page-loader">
+        <Spin size="large" />
     </div>
 )

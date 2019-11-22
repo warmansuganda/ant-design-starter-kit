@@ -1,25 +1,52 @@
 import axios from 'axios'
-import { Modal } from 'antd';
+import jwt from '@src/utils/jwt'
 
-const api = {
-    form: () => {
-        Modal.confirm({
-            title: 'Are you sure delete this task?',
-            content: 'Some descriptions',
-            okText: 'Yes',
-            okType: 'danger',
-            okButtonProps: {
-              disabled: true,
-            },
-            cancelText: 'No',
-            onOk() {
-              console.log('OK');
-            },
-            onCancel() {
-              console.log('Cancel');
-            },
-        })
+const authConfig = () => {
+    const currentUser = jwt.getToken()
+    return {
+        headers: { Authorization: `Bearer ${currentUser}` }
     }
 }
 
-export default api
+const defaultConfig = {
+  baseURL: process.env.REACT_APP_API
+}
+
+const getConfig = (config) => {
+    const cfg = {...defaultConfig, ...config}
+    if (typeof cfg.auth != 'undefined') {
+        if (typeof cfg.auth === 'boolean' && cfg.auth === true) {
+            delete cfg.auth
+            return {
+                ...cfg,
+                ...authConfig(),
+            }
+        }
+    }
+
+    return cfg
+}
+
+const instance = (config) => axios.create(getConfig(config))
+
+export default {
+    get: (url, config) => {
+        return instance(config).get(url)
+    },
+
+    delete: (url, config) => {
+        return instance(config).delete(url)
+    },
+
+    post: (url, data, config) => {
+        return instance(config).post(url, data)
+    },
+
+    patch: (url, data, config) => {
+        return instance(config).patch(url, data)
+    },
+
+    put: (url, data, config) => {
+        return instance(config).put(url, data)
+    },
+}

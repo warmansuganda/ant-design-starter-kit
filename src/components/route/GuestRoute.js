@@ -10,7 +10,7 @@ const GuestRoute = ({ isAuthenticated, component: Component, ...rest }) => (
       !isAuthenticated ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/home" />
+        <Redirect to="/dashboard" />
       )}
   />
 );
@@ -22,7 +22,7 @@ GuestRoute.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.authentication.token
+    isAuthenticated: !!state.auth.status
   };
 }
 
