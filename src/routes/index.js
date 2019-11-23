@@ -15,6 +15,12 @@ const routes = [
     page: () => <Redirect to="/landing-page" />
   },
   {
+    path: "/dashboard",
+    exact: true,
+    page: () => <h1>ini dashboard</h1>,
+    role: 'User'
+  },
+  {
     path: "/landing-page",
     layout: LandingLayout,
     page: LandingPage

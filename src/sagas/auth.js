@@ -4,6 +4,8 @@ import history from '@src/history'
 import api from '@src/api'
 import {USER_AUTHENTICATION, USER_SIGNOUT, USER_SIGNIN} from '@src/types'
 
+import jwt from '@src/utils/jwt'
+
 const authService = () => api.get('/auth').then(res => res.data)
 
 function* authSaga() {
@@ -19,11 +21,12 @@ function* authSaga() {
     }
 }
 
-function* logoutSaga() {
+function* logoutSignout() {
+    yield jwt.clearToken()
     yield history.push("/login")
 }
 
 export default function* watchUserAuthentication() {
   yield takeLatest(USER_AUTHENTICATION, authSaga);
-  yield takeLatest(USER_SIGNOUT, logoutSaga);
+  yield takeLatest(USER_SIGNOUT, logoutSignout);
 }

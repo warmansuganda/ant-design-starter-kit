@@ -1,10 +1,31 @@
 import React from 'react'
-import { Layout, Row, Col, Button, Menu } from 'antd'
+import { Layout, Row, Col, Menu } from 'antd'
 
 import history from '@src/history'
 import logo from '@src/assets/image/waiout-text.png'
+import AccessButton from './AccessButton'
+import SelectLanguage from './SelectLanguage'
 
 const HeaderNavbar = (props) => {
+    const menus = [
+        {
+            title: 'Our Platform',
+            url: '/',
+        },
+        {
+            title: 'Testimonial',
+            url: '/',
+        },
+        {
+            title: 'Knowledge',
+            url: '/',
+        },
+        {
+            title: 'About Us',
+            url: '/',
+        }
+    ]
+
     return (
         <Layout.Header className="clearfix">
             <Row>
@@ -20,18 +41,15 @@ const HeaderNavbar = (props) => {
                             id="nav"
                             mode="horizontal"
                             className="no-border no-background"
-                            defaultSelectedKeys={['1']}
+                            defaultSelectedKeys={['0']}
                             style={{ lineHeight: '64px' }}
                           >
-                            <Menu.Item key="1">Our Platform</Menu.Item>
-                            <Menu.Item key="2">Testimonial</Menu.Item>
-                            <Menu.Item key="3">Knowledge</Menu.Item>
-                            <Menu.Item key="4">About Us</Menu.Item>
+                          {menus.map((item, key) => <Menu.Item key={key} onClick={() => history.push(item.url)}>{item.title}</Menu.Item>)}
                         </Menu>
                     </Col>
                     <Col className="text-right" span={8}>
-                        <Button type="link" onClick={() => history.push('/login')}>Sign In</Button>
-                        <Button type="primary" onClick={() => history.push('/register')}>TRY IT FREE</Button>
+                        <AccessButton />
+                        <SelectLanguage />
                     </Col>
                 </Row>
               </Col>
